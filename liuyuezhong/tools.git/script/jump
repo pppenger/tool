@@ -1,0 +1,37 @@
+#!/usr/bin/expect
+set host [lindex $argv 0]
+set timeout 60
+set TERMSERV relay.inke.cn
+set USER "USER"
+set PASSWORD "PASSWORD"
+set AUTH "AUTH"
+set path [exec sh -c {echo $HOME/.ssh}]
+set cmd "otp $AUTH"
+set auth [exec sh -c $cmd]
+
+#trap sigwinch and pass it to the child we spawned
+trap {
+ set rows [stty rows]
+ set cols [stty columns]
+ stty rows $rows columns $cols < $spawn_out(slave,name)
+} WINCH
+
+spawn ssh -o ServerAliveInterval=30 -l $USER $TERMSERV
+expect {
+         "*Password:*" {
+            send "$PASSWORD\r"
+            expect {
+              "*Verification code:*" { send "$auth\r" }
+            }
+            exp_continue
+         }
+
+         "*relay:~" {
+             send "ssh -o ServerAliveInterval=30 $host\r"
+             expect {
+               "\[* ~\]#" { send "cd /a8root/work/service/ && ls -al \r" }
+             }
+         }
+       }
+
+interact

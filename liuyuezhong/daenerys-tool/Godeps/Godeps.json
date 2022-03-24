@@ -1,0 +1,49 @@
+{
+  "ImportPath": "git.inke.cn/BackendPlatform/daenerys-tool",
+  "GoVersion": "go1.13",
+  "InkedepVersion": "2.0",
+  "Deps": [
+    {
+      "ImportPath": "golang.org/x/tools",
+      "Custom": {
+        "SpecificTag": "master",
+        "SpecificRev": ""
+      }
+    },
+    {
+      "ImportPath": "github.com/xanzy/go-gitlab",
+      "Custom": {
+        "SpecificTag": "master",
+        "SpecificRev": ""
+      }
+    },
+    {
+      "ImportPath": "github.com/spf13/pflag",
+      "Custom": {
+        "SpecificTag": "master",
+        "SpecificRev": ""
+      }
+    },
+    {
+      "ImportPath": "github.com/spf13/cobra",
+      "Custom": {
+        "SpecificTag": "master",
+        "SpecificRev": ""
+      }
+    },
+    {
+      "ImportPath": "github.com/pkg/errors",
+      "Custom": {
+        "SpecificTag": "master",
+        "SpecificRev": ""
+      }
+    },
+    {
+      "ImportPath": "github.com/golang/protobuf",
+      "Custom": {
+        "SpecificTag": "master",
+        "SpecificRev": ""
+      }
+    }
+  ]
+}
